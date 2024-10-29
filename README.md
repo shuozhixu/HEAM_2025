@@ -2,17 +2,11 @@
 
 ## Foreword
 
-The purpose of this project is to calculate the basic structural parameters (including lattice parameter and elastic constants), generalized stacking fault energies (GSFE), local slip resistances (LSR), and dislocation/obstacle interaction strengths using atomistic simulations in random Al<sub>0.3</sub>CoCrFeNi MPEA. To provide references, the same properties for Ni are also calculated.
+The purpose of this project is to calculate the basic structural parameters (including lattice parameter and elastic constants), generalized stacking fault energies (GSFE), and local slip resistances (LSR), in random Al<sub>0.3</sub>CoCrFeNi multi-principal element alloy (MPEA). To provide references, the same properties for Ni are also calculated.
 
 ## LAMMPS
 
-LAMMPS on [OSCER](http://www.ou.edu/oscer.html) likely does not come with many packages. To finish this project, at least two packages are needed:
-
-- MANYBODY package. This is to use the manybody potential such as the embedded-atom method potential.
-- EXTRA-COMPUTE package. This is to calculate the elastic constants at finite temperatures using the Born matrix method. To learn more, please visit [this page](https://docs.lammps.org/Howto_elastic.html
-) and [this page](https://docs.lammps.org/compute_born_matrix.html). [This paper](https://doi.org/10.1063/1.447221) should be cited for the Born matrix method.
-
-To build LAMMPS with these two packages, please refer to [another project](https://github.com/shuozhixu/Modelling_2024).
+Following [another project](https://github.com/shuozhixu/Modelling_2024), we can build LAMMPS with MANYBODY and EXTRA-COMPUTE packages and submit jobs on [OSCER](http://www.ou.edu/oscer.html).
 
 Note: if we use sbatch files from [LAMMPSatOU](https://github.com/ANSHURAJ11/LAMMPSatOU), we may need to change the walltime (default: 12 hours) and/or number of cores (default: 16). For this project, I recommend
 
@@ -98,17 +92,8 @@ Note: two methods are independently used to build the edge dislocation, hence `b
 
 Calculations follow [a previous GitHub repository](https://github.com/shuozhixu/FLAM2020-LSR) and [its associated paper](http://dx.doi.org/10.1016/j.ijplas.2021.103157). 20 LSR are calculated for an edge and a screw dislocation, respectively, due to the randomness of elements.
 
-## Dislocation glide and dislocation/obstacle interactions
+## Reference
 
-Calculate the glide of and an obstacle interacting with both edge and screw dislocations at 5 K. The atomsk scripts that are used to build the atomistic structures as well as the LAMMPS input files for the LSR calculations, can be found in the `glide/` directory in this GitHub repository.
+If you use any files from this GitHub repository, please cite
 
-Calculations follow [a previous GitHub repository](https://github.com/wrj2018/MSMSE_2020). Consider both edge and screw dislocations and three types of obstacles: void, B2 precipitate, and L1<sub>2</sub> precipitate. Let the obstacle radius be 0.6 nm, 1.2 nm, 2.4 nm, 3.6 nm, and 4.8 nm, respectively. Read [these papers](https://drive.google.com/drive/folders/1Pfg0ZztTd7QkhRMLABwpwrZFWDxasoBQ?usp=sharing) which are on dislocatino/obstacle interactions in metals using atomistic simulations.
-
-Answer two questions:
-
-1. how is the standard deviation in dislocation/obstacle interaction strength compared with that in LSR?
-2. how does the orientation of the crystalline precipitates affect the dislocation bypassing stress? Is it possible that, for some orientations, the bypassing stress for a precipitate is larger than that for a void?
-
-## Discussion
-
-Elastic constants, LSR, and dislocation/precipitate interactions can be used directly in the CPFEM model. However, [experiments](https://doi.org/10.1016/j.actamat.2022.118600) showed that a typical B2 and L1<sub>2</sub> precipitate, respecitvely, has a diameter of 20--100 nm and 10--80 nm, beyond what are commonly modeled in atomistic simulations. Therefore, we will only use elastic constants and LSR in our CPFEM work.
+- Shuozhi Xu, Wu-Rong Jian, Irene J. Beyerlein, [Ideal simple shear strengths of two HfNbTaTi-based quinary refractory multi-principal element alloys](http://dx.doi.org/10.1063/5.0116898), APL Mater. 10 (2022) 111107
