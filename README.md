@@ -2,7 +2,7 @@
 
 ## Foreword
 
-The purpose of this project is to calculate the basic structural parameters (including lattice parameter and elastic constants), generalized stacking fault energies (GSFE), and local slip resistances (LSR), in random Al<sub>0.3</sub>CoCrFeNi multi-principal element alloy (MPEA). To provide references, the same properties for Ni are also calculated.
+The purpose of this project is to calculate the basic structural parameters (including lattice parameter and elastic constants), generalized stacking fault energies (GSFE), and local slip resistances (LSR), in random Al<sub>0.3</sub>CoCrFeNi multi-principal element alloy (MPEA). To provide references, the same properties in Ni are also calculated.
 
 ## LAMMPS
 
@@ -15,28 +15,28 @@ Note: if we use sbatch files from [LAMMPSatOU](https://github.com/ANSHURAJ11/LAM
 
 ## Interatomic potentials
 
-There are several interatomic potentials for this alloy. Let's focus on the following two:
+There are several interatomic potentials for this alloy. Here, we focus on the following two:
 
-- The first one is `AlCoCrFeNi_Zhou04.eam.alloy`. If one uses it, cite [this paper](http://dx.doi.org/10.1016/S1359-6454(01)00287-7) and [this paper](http://dx.doi.org/10.1103/PhysRevB.77.214108).
-- The second one is `FeNiCrCoAl-heaweight.setfl`. If one uses it, cite [this paper](https://doi.org/10.1557/jmr.2020.294).
+- The first one is `FeNiCrCoAl-heaweight.setfl`. If one uses it, cite [this paper](https://doi.org/10.1557/jmr.2020.294).
+- The second one is `AlCoCrFeNi_Zhou04.eam.alloy`. If one uses it, cite [this paper](http://dx.doi.org/10.1016/S1359-6454(01)00287-7) and [this paper](http://dx.doi.org/10.1103/PhysRevB.77.214108).
 
 Both potential files can be found in this GitHub repository.
 
 [This paper](https://doi.org/10.1016/j.msea.2021.141253) used an in-house interatomic potential to calculate some properties of Al<sub>_x_</sub>CoCrFeNi, where _x_ varies from 0 to 0.5. There may be other interatomic potentials for this MPEA.
 
-Note: after careful consideration, we decide to use the second potential for the following simulations.
+The paper in the referecen list in this GitHub repository explains why the first potential is preferred.
 
 ## Random structure
 
-Al<sub>0.3</sub>CoCrFeNi has an FCC lattice, according to [this paper](https://doi.org/10.1016/j.actamat.2022.118600). 
+Al<sub>0.3</sub>CoCrFeNi has an face-centered cubic lattice, according to [this paper](https://doi.org/10.1016/j.actamat.2022.118600). 
 
-In this alloy, the CSRO effect has been studied by [Sun et al.](https://doi.org/10.1016/j.matdes.2022.111214) and [Hasan et al.](https://doi.org/10.1016/j.commatsci.2024.112980), so we focus on the random structure. Also, the creep temperature is high (973--1033K) in [the experiment](https://doi.org/10.1016/j.actamat.2022.118600), at which the CSRO is negligible.
+In this alloy, the CSRO effect has been studied by [Sun et al.](https://doi.org/10.1016/j.matdes.2022.111214) and [Hasan et al.](https://doi.org/10.1016/j.commatsci.2024.112980), so we focus on the random structure.
 
-Random structures can be built using [Atomsk](https://atomsk.univ-lille.fr).
+Random structures are built using [Atomsk](https://atomsk.univ-lille.fr).
 
 ## Lattice parameters and elastic constants
 
-Calculate its lattice parameters and elastic constants at 0 K, 300 K, ..., 973 K, 1003 K, 1033 K. The last three are the temperatures used in [the creep experiments](https://doi.org/10.1016/j.actamat.2022.118600). For each data point, take the mean value from three random structures.
+Calculate its lattice parameters and elastic constants at 0 K, 300 K, ..., 973 K, 1003 K, 1033 K, respectively. The last three are the temperatures used in [the creep experiments](https://doi.org/10.1016/j.actamat.2022.118600). For each data point, take the mean value from three random structures.
 
 Calculations follow [a previous project](https://github.com/shuozhixu/Modelling_2024).
 
@@ -64,11 +64,11 @@ Once all jobs are finished, run
 
 	sh post_jobs.sh
 
-to get a file `gamma.txt`, which contains the GSFE surface and is compatible with the UCSB version of [PFDD](https://github.com/shuozhixu/PFDD) code. Note that in the subdirectory `0`, the file `gsfe` is the same GSFE curve calculated in [a previous project](https://github.com/shuozhixu/Modelling_2024), albeit for a different alloy there, CoCrNi.
+to get a file `gamma.txt`, which contains the GSFE surface and is compatible with the [PFDD](https://github.com/shuozhixu/PFDD) code. Note that in the subdirectory `0`, the file `gsfe` is the same GSFE curve calculated in [a previous project](https://github.com/shuozhixu/Modelling_2024), albeit for a different alloy there, CoCrNi.
 
-However, `gamma.txt` only contains the GSFE surface on one shift plane. According to [a previous paper](http://dx.doi.org/10.1016/j.cma.2021.114426), multiple GSFE surfaces need to be calculated to obtain a good statistics of the GSFE surface in an alloy.
+However, `gamma.txt` only contains the GSFE surface on one slip plane. According to [a previous work](http://dx.doi.org/10.1016/j.cma.2021.114426), multiple GSFE surfaces need to be calculated to obtain a good statistics of the GSFE surface in an alloy.
 
-To obtain other GSFE surfaces on other shift planes, create 19 more directories, `gsfe-2`, `gsfe-3`, ..., `gsfe-20`, and copy all necessary files to each.
+To obtain other GSFE surfaces on other parallel slip planes, create 19 more directories, `gsfe-2`, `gsfe-3`, ..., `gsfe-20`, and copy all necessary files to each.
 
 Take `gsfe-2` as an example. Change the last integer (by default `1`) in line 34 of `lmp_gsfe.in` to `2`, matching the number after `gsfe-`. Then within `gsfe-2/`,
 
@@ -82,15 +82,15 @@ Another `gamma.txt` file is then generated, which is the GSFE surface on the sec
 
 Follow the procedures above to generate 18 more `gamma.txt` files in `gsfe-3/`, `gsfe-4/`, ..., `gsfe-20/`, respectively.
 
-Eventually, we obtain 20 `gamma.txt` files, i.e., 20 GSFE surfaces. We then use the file `0/gsfe` in each directory `gsfe-XXX` to calculate 20 intrinsic stacking fault energies (ISFEs). Determine the maximum, minimum, and two mediam ISFE values. Let's assume that they are in the `gsfe-9`, `gsfe-15`, `gsfe-8`, and `gsfe-0` directories, respectively. Then we can use one or more of these four files, `gsfe-9/gamma.txt`, `gsfe-15/gamma.txt`, `gsfe-8/gamma.txt`, and `gsfe-0/gamma.txt`, in PFDD simulations, depending on what we want to study. For example, [Xu et al.](http://dx.doi.org/10.1016/j.cma.2021.114426) used the minimum and medium GSFE surfaces to study dislocations in a series of Cu-Nb alloys.
+Eventually, we obtain 20 `gamma.txt` files, i.e., 20 GSFE surfaces. We then use the file `0/gsfe` in each directory `gsfe-XXX` to calculate 20 intrinsic stacking fault energies.
 
 ## LSR
 
-Calculate the LSR of both edge and screw dislocations at 0 K. The atomsk scripts that are used to build the atomistic structures as well as the LAMMPS input files for the LSR calculations, can be found in the `lsr/` directory in this GitHub repository.
+Calculate the LSR of both edge and screw dislocations at 0 K. The atomsk scripts that are used to build the atomistic structures and the LAMMPS input files for the LSR calculations can be found in the `lsr/` directory in this GitHub repository.
 
-Note: two methods are independently used to build the edge dislocation, hence `build_edge1.sh` and `build_edge2.sh`. They correspond to the "remove a half-plane below the glide plane" method and the "superimposing two crystals" method on [this page](https://atomsk.univ-lille.fr/tutorial_Al_edge.php), respectively. It is found that the two methods lead to the same dislocation structure after energy minimization in Ni, but not in the MPEA.
+Note: two methods are independently used to build the edge dislocation, hence `build_edge1.sh` and `build_edge2.sh`. They correspond to the "superimposing two crystals" method and the "remove a half-plane below the glide plane" method on [this page](https://atomsk.univ-lille.fr/tutorial_Al_edge.php), respectively. It is found that the two methods lead to the same dislocation structure after energy minimization in Ni, but not in the MPEA.
 
-Calculations follow [a previous GitHub repository](https://github.com/shuozhixu/FLAM2020-LSR) and [its associated paper](http://dx.doi.org/10.1016/j.ijplas.2021.103157). 20 LSR are calculated for an edge and a screw dislocation, respectively, due to the randomness of elements.
+Calculations follow [a previous GitHub repository](https://github.com/shuozhixu/FLAM2020-LSR) and [its associated paper](http://dx.doi.org/10.1016/j.ijplas.2021.103157). 20 LSR are calculated for an edge and a screw dislocation, respectively, due to the randomness in atomic distribution.
 
 ## Reference
 
