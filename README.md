@@ -1,4 +1,4 @@
-# Al<sub>0.3</sub>CoCrFeNi: Atomistics
+# Al<sub>0.3</sub>CoCrFeNi: Atomistics: Basics
 
 ## Foreword
 
@@ -88,7 +88,7 @@ Eventually, we obtain 20 `gamma.txt` files, i.e., 20 GSFE surfaces. We then use 
 
 Calculate the LSR of both edge and screw dislocations at 0 K. The atomsk scripts that are used to build the atomistic structures and the LAMMPS input files for the LSR calculations can be found in the `lsr/` directory in this GitHub repository.
 
-Note: two methods are independently used to build the edge dislocation, hence `build_edge1.sh` and `build_edge2.sh`. They correspond to the "superimposing two crystals" method and the "remove a half-plane below the glide plane" method on [this page](https://atomsk.univ-lille.fr/tutorial_Al_edge.php), respectively. It is found that the two methods lead to the same dislocation structure after energy minimization in Ni, but not in the MPEA.
+Note: two methods are independently used to build the edge dislocation, hence `build_edge1.sh` and `build_edge2.sh`. They correspond to the "superimposing two crystals" method and the "remove a half-plane below the glide plane" method on [this page](https://atomsk.univ-lille.fr/tutorial_Al_edge.php), respectively. It is found that the two methods lead to the same dislocation structure after energy minimization in Ni, but not in the MPEA. The paper in the referecen list in this GitHub repository explains why the second method is preferred.
 
 Calculations follow [a previous GitHub repository](https://github.com/shuozhixu/FLAM2020-LSR) and [its associated paper](http://dx.doi.org/10.1016/j.ijplas.2021.103157). 20 LSR are calculated for an edge and a screw dislocation, respectively, due to the randomness in atomic distribution.
 
