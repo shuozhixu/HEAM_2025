@@ -25,7 +25,7 @@ change_box all triclinic
 # ------- EAM potentials      -------------------------------------------------
 
 pair_style      eam/alloy
-pair_coeff      * * FeNiCrCoAl-heaweight.setfl Ni Ni Ni Ni Ni
+pair_coeff      * * FeNiCrCoAl-heaweight.setfl Cr Fe Ni Co Al
 
 
 # ------- timestep & log      -------------------------------------------------
