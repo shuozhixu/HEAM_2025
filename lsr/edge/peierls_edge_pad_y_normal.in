@@ -49,15 +49,15 @@ group  mobile subtract all boundary
 
 # ------- energy minimization -------------------------------------------------
 
-variable Etol equal 1.0e-12
+variable Etol equal 0.
 
 min_style cg
 fix 1 all box/relax x 0 z 0 nreset 1
-minimize  ${Etol} ${Etol} 100000 100000
+minimize  ${Etol} ${Etol} 10000000 10000000
 unfix 1
 
 min_style fire
-minimize  ${Etol} ${Etol} 100000 100000
+minimize  ${Etol} ${Etol} 10000000 10000000
 
 dump 1 all custom 1 dump.0.load id type x y z
 
