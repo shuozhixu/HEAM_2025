@@ -91,4 +91,4 @@ Calculations follow [a previous GitHub repository](https://github.com/shuozhixu/
 
 If you use any files from this GitHub repository, please cite
 
-- Anshu Raj, Subah Mubassira, Shuozhi Xu, [Generalized stacking fault energies and local slip resistances in Al0.3CoCrFeNi: An atomistic study](https://doi.org/10.1007/s44210-025-00060-8), High Entropy Alloys Mater. (in press)
+- Anshu Raj, Subah Mubassira, Shuozhi Xu, [Generalized stacking fault energies and local slip resistances in Al<sub>0.3</sub>CoCrFeNi: An atomistic study](https://doi.org/10.1007/s44210-025-00060-8), High Entropy Alloys Mater. (in press)
