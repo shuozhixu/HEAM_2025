@@ -8,11 +8,6 @@ The purpose of this project is to calculate the basic structural parameters (inc
 
 Following [another project](https://github.com/shuozhixu/Modelling_2024), we can build LAMMPS with MANYBODY and EXTRA-COMPUTE packages and submit jobs on [OSCER](http://www.ou.edu/oscer.html).
 
-Note: if we use sbatch files from [LAMMPSatOU](https://github.com/ANSHURAJ11/LAMMPSatOU), we may need to change the walltime (default: 12 hours) and/or number of cores (default: 16). For this project, I recommend
-
-	#SBATCH --time=200:00:00
-	#SBATCH --ntasks-per-node=32
-
 ## Interatomic potentials
 
 There are several interatomic potentials for this alloy. Here, we focus on the following two:
@@ -96,4 +91,4 @@ Calculations follow [a previous GitHub repository](https://github.com/shuozhixu/
 
 If you use any files from this GitHub repository, please cite
 
-- Shuozhi Xu, Wu-Rong Jian, Irene J. Beyerlein, [Ideal simple shear strengths of two HfNbTaTi-based quinary refractory multi-principal element alloys](http://dx.doi.org/10.1063/5.0116898), APL Mater. 10 (2022) 111107
+- Anshu Raj, Subah Mubassira, Shuozhi Xu, [Generalized stacking fault energies and local slip resistances in Al0.3CoCrFeNi: An atomistic study](https://doi.org/10.1007/s44210-025-00060-8), High Entropy Alloys Mater. (in press)
