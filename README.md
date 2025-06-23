@@ -15,11 +15,10 @@ There are several interatomic potentials for this alloy. Here, we focus on the f
 - The first one is `FeNiCrCoAl-heaweight.setfl`. If one uses it, cite [this paper](https://doi.org/10.1557/jmr.2020.294).
 - The second one is `AlCoCrFeNi_Zhou04.eam.alloy`. If one uses it, cite [this paper](http://dx.doi.org/10.1016/S1359-6454(01)00287-7) and [this paper](http://dx.doi.org/10.1103/PhysRevB.77.214108).
 
-Both potential files can be found in this GitHub repository.
+Both potential files can be found in this GitHub repository. The paper in the reference list in this GitHub repository explains why the first potential is preferred.
 
-[This paper](https://doi.org/10.1016/j.msea.2021.141253) used an in-house interatomic potential to calculate some properties of Al<sub>_x_</sub>CoCrFeNi, where _x_ varies from 0 to 0.5. There may be other interatomic potentials for this MPEA.
+There are other interatomic potentials for this MPEA, e.g., the one developed by [Yang et al.](https://doi.org/10.1016/j.msea.2021.141253). However, we did not study them here.
 
-The paper in the reference list in this GitHub repository explains why the first potential is preferred.
 
 ## Random structure
 
@@ -35,9 +34,9 @@ Calculate its lattice parameters and elastic constants at 0 K, 300 K, ..., 973 K
 
 Calculations follow [a previous project](https://github.com/shuozhixu/Modelling_2024).
 
-## GSFE
+## GSFE surfaces
 
-Calculate the GSFE at 0 K. Most files are in the `gsfe/` directory in this GitHub repository. Upload all of them to a directory, say `gsfe-1/`, on OSCER.
+Calculate the GSFE surfaces at 0 K. Most files are in the `gsfe/` directory in this GitHub repository. Upload all of them to a directory, say `gsfe-1/`, on OSCER.
 
 Locally run the atomsk script, `build_gsfe.sh`, to build the data file. Check the order of elements in the data file, then modify line 17 of `lmp_gsfe.in` to ensure that the two orders match.
 
@@ -77,13 +76,13 @@ Another `gamma.txt` file is then generated, which is the GSFE surface on the sec
 
 Follow the procedures above to generate 18 more `gamma.txt` files in `gsfe-3/`, `gsfe-4/`, ..., `gsfe-20/`, respectively.
 
-Eventually, we obtain 20 `gamma.txt` files, i.e., 20 GSFE surfaces. We then use the file `0/gsfe` in each directory `gsfe-XXX` to calculate 20 intrinsic stacking fault energies.
+Eventually, we obtain 20 `gamma.txt` files, i.e., 20 GSFE surfaces. As mentioned earlier, we can use the file `0/gsfe` in each directory `gsfe-XXX` to calculate 20 intrinsic/unstable stacking fault energies.
 
 ## LSR
 
 Calculate the LSR of both edge and screw dislocations at 0 K. The atomsk scripts that are used to build the atomistic structures and the LAMMPS input files for the LSR calculations can be found in the `lsr/` directory in this GitHub repository.
 
-Note: two methods are independently used to build the edge dislocation, hence `build_edge1.sh` and `build_edge2.sh`. They correspond to the "superimposing two crystals" method and the "remove a half-plane below the glide plane" method on [this page](https://atomsk.univ-lille.fr/tutorial_Al_edge.php), respectively. It is found that the two methods lead to the same dislocation structure after energy minimization in Ni, but not in the MPEA. The paper in the reference list in this GitHub repository explains why the second method is preferred.
+Note: two methods are independently used to insert an edge dislocation, hence `build_edge1.sh` and `build_edge2.sh`. They correspond to the "superimposing two crystals" method and the "remove a half-plane below the glide plane" method on [this page](https://atomsk.univ-lille.fr/tutorial_Al_edge.php), respectively. It is found that the two methods lead to the same dislocation structure after energy minimization in Ni, but not in the MPEA. The paper in the reference list in this GitHub repository explains why the second method is preferred.
 
 Calculations follow [a previous GitHub repository](https://github.com/shuozhixu/FLAM2020-LSR) and [its associated paper](http://dx.doi.org/10.1016/j.ijplas.2021.103157). 20 LSR are calculated for an edge and a screw dislocation, respectively, due to the randomness in atomic distribution.
 
