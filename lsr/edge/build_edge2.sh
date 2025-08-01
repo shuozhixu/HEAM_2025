@@ -12,7 +12,7 @@ x=$(echo "scale=5;$d*$a/3.326" | bc)
 
 y=$(echo "scale=5;$e*$a/3.326" | bc)
 
-b=$(echo "scale=5;$a*sqrt(3.)/2." | bc)
+b=$(echo "scale=5;$a*sqrt(2.)/2." | bc)
 
 atomsk --create fcc $a Ni orient [-110] [111] [11-2] -duplicate 161 82 1 supercell.cfg
 
